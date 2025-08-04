@@ -70,6 +70,142 @@
             --shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.1rem !important;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .about-section {
+                padding: 60px 0 !important;
+            }
+            
+            .about-text h3 {
+                font-size: 1.8rem !important;
+            }
+            
+            .services-section {
+                padding: 60px 0 !important;
+            }
+            
+            .service-card {
+                margin-bottom: 30px;
+            }
+            
+            .navbar-nav {
+                text-align: center;
+                margin-top: 20px;
+            }
+            
+            .navbar-nav .nav-link {
+                padding: 12px 0;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .navbar-nav .nav-link:last-child {
+                border-bottom: none;
+            }
+            
+            .dropdown-menu {
+                border: none;
+                box-shadow: none;
+                background: var(--bg-secondary);
+            }
+            
+            .dropdown-item {
+                color: var(--text-primary) !important;
+                padding: 10px 20px;
+            }
+            
+            .dropdown-item:hover {
+                background: var(--primary-red);
+                color: var(--primary-white) !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem !important;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1rem !important;
+            }
+            
+            .about-text h3 {
+                font-size: 1.5rem !important;
+            }
+            
+            .service-card {
+                padding: 20px !important;
+            }
+            
+            .service-card h4 {
+                font-size: 1.3rem !important;
+            }
+            
+            .footer {
+                text-align: center;
+            }
+            
+            .footer .col-lg-4,
+            .footer .col-lg-2,
+            .footer .col-lg-3 {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 3.5rem !important;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.3rem !important;
+            }
+            
+            .about-text h3 {
+                font-size: 2.2rem !important;
+            }
+            
+            .service-card {
+                padding: 30px !important;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .hero-content h1 {
+                font-size: 4rem !important;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.5rem !important;
+            }
+            
+            .about-text h3 {
+                font-size: 2.5rem !important;
+            }
+            
+            .service-card {
+                padding: 40px !important;
+            }
+        }
+
         /* Swirl Cursor Effect */
         * {
             cursor: none;
