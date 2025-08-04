@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Malik Brothers LPG Products - 10kg Fiber, 11.8kg Metal, and 45.5kg Metal cylinders. High-quality PSO-certified LPG cylinders for all your needs.">
+    <title>Products - Malik Brothers LPG | Premium LPG Cylinders</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-red: #E00000;
+            --primary-white: #FFFFFF;
+            --secondary-red: #C00000;
+            --light-gray: #F8F9FA;
+            --dark-gray: #333333;
+            
+            /* Light Theme Colors */
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8F9FA;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --border-color: #E0E0E0;
+            --card-bg: #FFFFFF;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dark Theme Colors */
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #FFFFFF;
+            --text-secondary: #CCCCCC;
+            --border-color: #404040;
+            --card-bg: #2d2d2d;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Swirl Cursor Effect */
+        * {
+            cursor: none;
+        }
+
+        .cursor-dot {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
+            box-shadow: 0 0 10px var(--primary-red);
+        }
+
+        .cursor-ring {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--primary-red);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.3s ease;
+            opacity: 0.6;
+        }
+
+        .cursor-swirl {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            pointer-events: none;
+            z-index: 9997;
+            opacity: 0.4;
+        }
+
+        .swirl-particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            animation: swirlRotate 2s linear infinite;
+        }
+
+        .swirl-particle:nth-child(1) {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 0s;
+        }
+
+        .swirl-particle:nth-child(2) {
+            top: 10px;
+            right: 10px;
+            animation-delay: 0.2s;
+        }
+
+        .swirl-particle:nth-child(3) {
+            bottom: 10px;
+            right: 10px;
+            animation-delay: 0.4s;
+        }
+
+        .swirl-particle:nth-child(4) {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 0.6s;
+        }
+
+        .swirl-particle:nth-child(5) {
+            bottom: 10px;
+            left: 10px;
+            animation-delay: 0.8s;
+        }
+
+        .swirl-particle:nth-child(6) {
+            top: 10px;
+            left: 10px;
+            animation-delay: 1s;
+        }
+
+        @keyframes swirlRotate {
+            0% {
+                transform: rotate(0deg) translateX(20px) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: rotate(360deg) translateX(20px) rotate(-360deg);
+                opacity: 1;
+            }
+        }
+
+        .cursor-dot.hover {
+            transform: scale(2.5);
+            background: var(--primary-white);
+            box-shadow: 0 0 20px var(--primary-white);
+        }
+
+        .cursor-ring.hover {
+            transform: scale(1.8);
+            border-color: var(--primary-white);
+            opacity: 0.8;
+        }
+
+        .cursor-swirl.hover {
+            transform: scale(1.3);
+            opacity: 0.7;
+        }
+
+        .cursor-swirl.hover .swirl-particle {
+            animation-duration: 1s;
+        }
+
+        .cursor-dot.click {
+            transform: scale(0.3);
+            animation: cursorClick 0.3s ease;
+        }
+
+        .cursor-swirl.click {
+            animation: swirlExpand 0.3s ease;
+        }
+
+        @keyframes cursorClick {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.1); }
+            100% { transform: scale(0.3); }
+        }
+
+        @keyframes swirlExpand {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+            100% { transform: scale(1); }
+        }
+
+        /* Hide cursor on mobile */
+        @media (max-width: 768px) {
+            * {
+                cursor: auto;
+            }
+            .cursor-dot,
+            .cursor-ring,
+            .cursor-swirl {
+                display: none;
+            }
+        }
+
+        /* Theme Toggle Styles */
+        .theme-toggle {
+            border: none;
+            background: transparent;
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-red);
+            color: var(--primary-white);
+            transform: scale(1.1);
+        }
+
+        /* Dark Theme Specific Styles */
+        [data-theme="dark"] body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .navbar {
+            background: var(--bg-primary) !important;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="dark"] .navbar-nav .nav-link {
+            color: var(--text-primary) !important;
+        }
+
+        [data-theme="dark"] .page-header {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="dark"] .products-section {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="dark"] .gallery-section {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="dark"] .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        [data-theme="dark"] .gallery-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        [data-theme="dark"] .footer {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .section-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .section-subtitle {
+            color: var(--text-secondary);
+        }
+
+        /* Additional Text Color Fixes */
+        [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, 
+        [data-theme="dark"] h4, [data-theme="dark"] h5, [data-theme="dark"] h6 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] p {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .page-header h1 {
+            color: var(--primary-white);
+        }
+
+        [data-theme="dark"] .product-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .product-price {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .product-description {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .gallery-caption h5 {
+            color: var(--primary-white);
+        }
+
+        [data-theme="dark"] .gallery-caption p {
+            color: var(--primary-white);
+        }
+
+        [data-theme="dark"] .footer h5 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .footer p {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .footer a {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .footer a:hover {
+            color: var(--primary-red);
+        }
+
+
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+        
+        .navbar {
+            background: var(--bg-primary) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-red) !important;
+        }
+        
+        .navbar-nav .nav-link {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+            margin: 0 10px;
+        }
+        
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--primary-red) !important;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+            color: var(--primary-white);
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            margin-bottom: 3rem;
+        }
+        
+        .products-section {
+            padding: 80px 0;
+        }
+        
+        .product-hero {
+            background: var(--light-gray);
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+        
+        .product-card {
+            background: var(--primary-white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .products-section .row {
+            margin: 0 -15px;
+        }
+        
+        .products-section .col-lg-4,
+        .products-section .col-md-6 {
+            padding: 0 15px;
+            margin-bottom: 30px;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(224, 0, 0, 0.2);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 350px;
+            object-fit: contain;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-badge {
+            background: var(--primary-red);
+            color: var(--primary-white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .product-title {
+            color: var(--primary-red);
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .product-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+        }
+        
+        .product-specs {
+            background: var(--light-gray);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .spec-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .spec-label {
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+        
+        .spec-value {
+            color: var(--primary-red);
+            font-weight: 500;
+        }
+        
+        .product-features {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            color: var(--primary-red);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .btn-order {
+            background: var(--primary-red);
+            color: var(--primary-white);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        .btn-order:hover {
+            background: var(--secondary-red);
+            transform: translateY(-2px);
+        }
+        
+        .btn-details {
+            background: transparent;
+            color: var(--primary-red);
+            border: 2px solid var(--primary-red);
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .btn-details:hover {
+            background: var(--primary-red);
+            color: var(--primary-white);
+        }
+        
+        .gallery-section {
+            background: var(--light-gray);
+            padding: 80px 0;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-section .row {
+            margin: 0 -15px;
+        }
+        
+        .gallery-section .col-lg-4,
+        .gallery-section .col-md-6 {
+            padding: 0 15px;
+            margin-bottom: 30px;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            background: var(--primary-white);
+            text-align: center;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(224, 0, 0, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .gallery-caption {
+            background: var(--primary-white);
+            color: var(--dark-gray);
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .gallery-caption h5 {
+            margin: 0 0 8px 0;
+            font-weight: 700;
+            color: var(--primary-red);
+            font-size: 1.2rem;
+        }
+        
+        .gallery-caption p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #666;
+        }
+        
+        .footer {
+            background: var(--dark-gray);
+            color: var(--primary-white);
+            padding: 50px 0 20px;
+        }
+        
+        .footer h5 {
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+        
+        .footer a {
+            color: var(--primary-white);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: var(--primary-red);
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .product-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+    <body>
+        <!-- Swirl Cursor Effect -->
+        <div class="cursor-dot"></div>
+        <div class="cursor-ring"></div>
+        <div class="cursor-swirl">
+            <div class="swirl-particle"></div>
+            <div class="swirl-particle"></div>
+            <div class="swirl-particle"></div>
+            <div class="swirl-particle"></div>
+            <div class="swirl-particle"></div>
+            <div class="swirl-particle"></div>
+        </div>
+        
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Malik Brothers Logo" height="40">
+                Malik Brothers LPG
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="services.html#bulk">Bulk LPG Supply</a></li>
+                            <li><a class="dropdown-item" href="services.html#restaurant">Restaurant Delivery</a></li>
+                            <li><a class="dropdown-item" href="services.html#industrial">Industrial Supply</a></li>
+                            <li><a class="dropdown-item" href="services.html#scheduled">Scheduled Refills</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="locations.html">Locations</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-danger theme-toggle" id="themeToggle">
+                            <i class="fas fa-sun" id="themeIcon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Products</h1>
+            <p>Premium PSO-Certified LPG Cylinders for Every Need</p>
+        </div>
+    </section>
+
+    <!-- Product Hero -->
+    <section class="product-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="section-title text-start">Quality LPG Cylinders</h2>
+                    <p class="lead">We deal in high-quality LPG cylinders that meet the highest safety standards. Our products are PSO-certified and designed for reliability and durability.</p>
+                    <div class="row mt-4">
+                        <div class="col-md-4 text-center">
+                            <i class="fas fa-shield-alt text-danger mb-2" style="font-size: 2rem;"></i>
+                            <h5>PSO Certified</h5>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <i class="fas fa-truck text-danger mb-2" style="font-size: 2rem;"></i>
+                            <h5>Fast Delivery</h5>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <i class="fas fa-tools text-danger mb-2" style="font-size: 2rem;"></i>
+                            <h5>24/7 Support</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="cylinder-hero.jpg" alt="LPG Cylinders" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Available Cylinders</h2>
+            <div class="row">
+                <!-- 10kg Fiber Cylinder -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <img src="10kg.png" alt="10kg Fiber LPG Cylinder" class="product-image">
+                        <div class="product-badge">Fiber Technology</div>
+                        <h3 class="product-title">10kg Fiber Cylinder</h3>
+                        <div class="product-price">Rs. 11,000</div>
+                        
+                        <div class="product-specs">
+                            <div class="spec-item">
+                                <span class="spec-label">Capacity:</span>
+                                <span class="spec-value">10kg</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Material:</span>
+                                <span class="spec-value">Fiber Composite</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Weight:</span>
+                                <span class="spec-value">8.5kg (Empty)</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Height:</span>
+                                <span class="spec-value">580mm</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Diameter:</span>
+                                <span class="spec-value">315mm</span>
+                            </div>
+                        </div>
+                        
+                        <div class="product-features">
+                            <ul class="feature-list">
+                                <li>Lightweight and portable</li>
+                                <li>Rust and corrosion resistant</li>
+                                <li>Transparent fuel level indicator</li>
+                                <li>Built-in safety valve</li>
+                                <li>Ideal for home and camping use</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="btn-order" onclick="addToCart(1, '10kg Fiber Cylinder', 11000)">Add to Cart</button>
+                        <button class="btn-details" onclick="showProductDetails(1)">View Details</button>
+                    </div>
+                </div>
+
+                <!-- 11.8kg Metal Cylinder -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <img src="11.8kg.png" alt="11.8kg Metal LPG Cylinder" class="product-image">
+                        <div class="product-badge">Metal Construction</div>
+                        <h3 class="product-title">11.8kg Metal Cylinder</h3>
+                        <div class="product-price">Rs. 10,000</div>
+                        
+                        <div class="product-specs">
+                            <div class="spec-item">
+                                <span class="spec-label">Capacity:</span>
+                                <span class="spec-value">11.8kg</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Material:</span>
+                                <span class="spec-value">Steel</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Weight:</span>
+                                <span class="spec-value">12.5kg (Empty)</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Height:</span>
+                                <span class="spec-value">650mm</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Diameter:</span>
+                                <span class="spec-value">340mm</span>
+                            </div>
+                        </div>
+                        
+                        <div class="product-features">
+                            <ul class="feature-list">
+                                <li>Traditional steel construction</li>
+                                <li>High durability and strength</li>
+                                <li>Standard safety valve</li>
+                                <li>Perfect for home kitchens</li>
+                                <li>Long service life</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="btn-order" onclick="addToCart(2, '11.8kg Metal Cylinder', 10000)">Add to Cart</button>
+                        <button class="btn-details" onclick="showProductDetails(2)">View Details</button>
+                    </div>
+                </div>
+
+                <!-- 45.5kg Metal Cylinder -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <img src="45.4kg.png" alt="45.5kg Metal LPG Cylinder" class="product-image">
+                        <div class="product-badge">Commercial Grade</div>
+                        <h3 class="product-title">45.5kg Metal Cylinder</h3>
+                        <div class="product-price">Rs. 23,500</div>
+                        
+                        <div class="product-specs">
+                            <div class="spec-item">
+                                <span class="spec-label">Capacity:</span>
+                                <span class="spec-value">45.5kg</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Material:</span>
+                                <span class="spec-value">Heavy Steel</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Weight:</span>
+                                <span class="spec-value">35kg (Empty)</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Height:</span>
+                                <span class="spec-value">1200mm</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Diameter:</span>
+                                <span class="spec-value">400mm</span>
+                            </div>
+                        </div>
+                        
+                        <div class="product-features">
+                            <ul class="feature-list">
+                                <li>Commercial and industrial use</li>
+                                <li>High capacity for large operations</li>
+                                <li>Heavy-duty construction</li>
+                                <li>Advanced safety features</li>
+                                <li>Ideal for restaurants and factories</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="btn-order" onclick="addToCart(3, '45.5kg Metal Cylinder', 45000)">Add to Cart</button>
+                        <button class="btn-details" onclick="showProductDetails(3)">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <p class="section-subtitle">Quality LPG cylinders and accessories for all your needs</p>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="10kg.png" alt="10kg Fiber Cylinder">
+                        <div class="gallery-caption">
+                            <h5>10kg Fiber Cylinder</h5>
+                            <p>Lightweight and portable</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="11.8kg.png" alt="11.8kg Metal Cylinder">
+                        <div class="gallery-caption">
+                            <h5>11.8kg Metal Cylinder</h5>
+                            <p>Traditional steel construction</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="45.4kg.png" alt="45.5kg Metal Cylinder">
+                        <div class="gallery-caption">
+                            <h5>45.5kg Metal Cylinder</h5>
+                            <p>Commercial grade capacity</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="regulator.jpeg" alt="LPG Regulator">
+                        <div class="gallery-caption">
+                            <h5>LPG Regulator</h5>
+                            <p>Safety certified equipment</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="gas hose.jpg" alt="Gas Hose">
+                        <div class="gallery-caption">
+                            <h5>Gas Hose</h5>
+                            <p>High-quality flexible connection</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="contact-info-section" style="position: relative; overflow: hidden;">
+        <!-- Dark Gray Top Section -->
+        <div style="background: var(--dark-gray); padding: 60px 0 40px; position: relative;">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 style="color: white; font-size: 3rem; font-weight: 700; margin-bottom: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Quality LPG Cylinders</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content Section -->
+        <div style="background: var(--bg-primary); padding: 60px 0 80px; position: relative;">
+            <!-- Faint LPG Cylinder Image -->
+            <div style="position: absolute; top: 20px; right: 50px; opacity: 0.1; z-index: 1;">
+                <img src="10kg.png" alt="LPG Cylinder" style="width: 200px; height: auto; filter: grayscale(100%);">
+            </div>
+            
+            <div class="container" style="position: relative; z-index: 2;">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 3rem; text-align: center;">We deal in high-quality LPG cylinders that meet the highest safety standards. Our products are PSO-certified and designed for reliability and durability.</p>
+                        
+                        <div class="row">
+                            <div class="col-md-4 text-center mb-4">
+                                <div style="margin-bottom: 20px;">
+                                    <i class="fas fa-shield-alt" style="font-size: 3rem; color: var(--primary-red);"></i>
+                                </div>
+                                <p style="color: var(--text-secondary); font-size: 1rem; margin: 0;">PSO Certified</p>
+                            </div>
+                            
+                            <div class="col-md-4 text-center mb-4">
+                                <div style="margin-bottom: 20px;">
+                                    <i class="fas fa-truck" style="font-size: 3rem; color: var(--primary-red);"></i>
+                                </div>
+                                <p style="color: var(--text-secondary); font-size: 1rem; margin: 0;">Fast Delivery</p>
+                            </div>
+                            
+                            <div class="col-md-4 text-center mb-4">
+                                <div style="margin-bottom: 20px; position: relative;">
+                                    <i class="fas fa-tools" style="font-size: 3rem; color: var(--primary-red);"></i>
+                                    <!-- Decorative Elements -->
+                                    <div style="position: absolute; top: -10px; right: -10px; width: 15px; height: 15px; background: #74b9ff; border-radius: 50%; opacity: 0.7;"></div>
+                                    <div style="position: absolute; bottom: -5px; left: -5px; width: 8px; height: 8px; background: var(--primary-red); border-radius: 50%; opacity: 0.6;"></div>
+                                </div>
+                                <p style="color: var(--text-secondary); font-size: 1rem; margin: 0;">24/7 Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5>Malik Brothers LPG</h5>
+                    <p>Trusted PSO Distributor serving Karachi and Islamabad for over 21 years with high-quality LPG solutions.</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="products.html">Products</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-phone me-2"></i> Karachi: +92 333 3241472</p>
+                    <p><i class="fas fa-phone me-2"></i> Islamabad: 03039712506</p>
+                    <p><i class="fas fa-envelope me-2"></i> Karachi: malikoilgastraders@gmail.com</p>
+                    <p><i class="fas fa-envelope me-2"></i> Islamabad: faisal.ws@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Karachi & Islamabad</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Business Hours</h5>
+                    <p>Monday - Sunday</p>
+                    <p>8:00 AM - 8:00 PM</p>
+                    <p>24/7 Emergency Support</p>
+                </div>
+            </div>
+            <div class="text-center pt-3 border-top">
+                <p>&copy; 2024 Malik Brothers LPG. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Add to cart functionality
+        function addToCart(productId, name, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: productId,
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${name} added to cart!`);
+        }
+        
+        // Show product details
+        function showProductDetails(productId) {
+            const products = {
+                1: {
+                    name: "10kg Fiber Cylinder",
+                    description: "Lightweight fiber composite cylinder perfect for home use and camping. Features transparent fuel level indicator and built-in safety valve.",
+                    specifications: {
+                        "Capacity": "10kg",
+                        "Material": "Fiber Composite",
+                        "Empty Weight": "8.5kg",
+                        "Height": "580mm",
+                        "Diameter": "315mm",
+                        "Safety Features": "Built-in valve, transparent indicator"
+                    }
+                },
+                2: {
+                    name: "11.8kg Metal Cylinder",
+                    description: "Traditional steel cylinder with high durability and strength. Perfect for home kitchens and small commercial use.",
+                    specifications: {
+                        "Capacity": "11.8kg",
+                        "Material": "Steel",
+                        "Empty Weight": "12.5kg",
+                        "Height": "650mm",
+                        "Diameter": "340mm",
+                        "Safety Features": "Standard safety valve"
+                    }
+                },
+                3: {
+                    name: "45.5kg Metal Cylinder",
+                    description: "Heavy-duty commercial cylinder designed for restaurants, factories, and large-scale operations.",
+                    specifications: {
+                        "Capacity": "45.5kg",
+                        "Material": "Heavy Steel",
+                        "Empty Weight": "35kg",
+                        "Height": "1200mm",
+                        "Diameter": "400mm",
+                        "Safety Features": "Advanced safety system"
+                    }
+                }
+            };
+            
+            const product = products[productId];
+            if (product) {
+                let details = `Product: ${product.name}\n\n`;
+                details += `Description: ${product.description}\n\n`;
+                details += `Specifications:\n`;
+                for (const [key, value] of Object.entries(product.specifications)) {
+                    details += `${key}: ${value}\n`;
+                }
+                alert(details);
+            }
+        }
+        
+        // Swirl Cursor Effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorRing = document.querySelector('.cursor-ring');
+            const cursorSwirl = document.querySelector('.cursor-swirl');
+            
+            if (!cursorDot || !cursorRing || !cursorSwirl) return;
+            
+            let mouseX = 0;
+            let mouseY = 0;
+            let dotX = 0;
+            let dotY = 0;
+            let ringX = 0;
+            let ringY = 0;
+            let swirlX = 0;
+            let swirlY = 0;
+            
+            // Update mouse position
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+            
+            // Smooth cursor animation
+            function animateCursor() {
+                // Dot cursor (fastest)
+                dotX += (mouseX - dotX) * 0.3;
+                dotY += (mouseY - dotY) * 0.3;
+                cursorDot.style.left = dotX + 'px';
+                cursorDot.style.top = dotY + 'px';
+                
+                // Ring cursor (medium)
+                ringX += (mouseX - ringX) * 0.15;
+                ringY += (mouseY - ringY) * 0.15;
+                cursorRing.style.left = ringX + 'px';
+                cursorRing.style.top = ringY + 'px';
+                
+                // Swirl cursor (slowest)
+                swirlX += (mouseX - swirlX) * 0.08;
+                swirlY += (mouseY - swirlY) * 0.08;
+                cursorSwirl.style.left = swirlX + 'px';
+                cursorSwirl.style.top = swirlY + 'px';
+                
+                requestAnimationFrame(animateCursor);
+            }
+            
+            // Click animation
+            document.addEventListener('click', () => {
+                cursorDot.classList.add('click');
+                cursorSwirl.classList.add('click');
+                setTimeout(() => {
+                    cursorDot.classList.remove('click');
+                    cursorSwirl.classList.remove('click');
+                }, 300);
+            });
+            
+            // Hover effects for interactive elements
+            const hoverElements = document.querySelectorAll('a, button, .btn, .nav-link, .product-card, .gallery-item, .btn-order, .btn-details');
+            hoverElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    cursorDot.classList.add('hover');
+                    cursorRing.classList.add('hover');
+                    cursorSwirl.classList.add('hover');
+                });
+                
+                element.addEventListener('mouseleave', () => {
+                    cursorDot.classList.remove('hover');
+                    cursorRing.classList.remove('hover');
+                    cursorSwirl.classList.remove('hover');
+                });
+            });
+            
+            // Start animation
+            animateCursor();
+        });
+        
+        // Theme Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const html = document.documentElement;
+            
+            // Check for saved theme preference or default to light
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            html.setAttribute('data-theme', currentTheme);
+            updateThemeIcon(currentTheme);
+            
+            // Theme toggle click handler
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+            
+            function updateThemeIcon(theme) {
+                if (theme === 'dark') {
+                    themeIcon.className = 'fas fa-moon';
+                } else {
+                    themeIcon.className = 'fas fa-sun';
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

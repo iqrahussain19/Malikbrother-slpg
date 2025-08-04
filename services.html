@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Malik Brothers LPG services: Bulk supply, restaurant delivery, industrial solutions, and scheduled refills. Professional LPG distribution in Karachi and Islamabad.">
+    <title>Services - Malik Brothers LPG | Professional LPG Distribution Solutions</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-red: #E00000;
+            --primary-white: #FFFFFF;
+            --secondary-red: #C00000;
+            --light-gray: #F8F9FA;
+            --dark-gray: #333333;
+            
+            /* Light Theme Colors */
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8F9FA;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --border-color: #E0E0E0;
+            --card-bg: #FFFFFF;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dark Theme Colors */
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #FFFFFF;
+            --text-secondary: #CCCCCC;
+            --border-color: #404040;
+            --card-bg: #2d2d2d;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Swirl Cursor Effect */
+        * {
+            cursor: none;
+        }
+
+        .cursor-dot {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
+            box-shadow: 0 0 10px var(--primary-red);
+        }
+
+        .cursor-ring {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--primary-red);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.3s ease;
+            opacity: 0.6;
+        }
+
+        .cursor-swirl {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            pointer-events: none;
+            z-index: 9997;
+            opacity: 0.4;
+        }
+
+        .swirl-particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            animation: swirlRotate 2s linear infinite;
+        }
+
+        .swirl-particle:nth-child(1) {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 0s;
+        }
+
+        .swirl-particle:nth-child(2) {
+            top: 10px;
+            right: 10px;
+            animation-delay: 0.2s;
+        }
+
+        .swirl-particle:nth-child(3) {
+            bottom: 10px;
+            right: 10px;
+            animation-delay: 0.4s;
+        }
+
+        .swirl-particle:nth-child(4) {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 0.6s;
+        }
+
+        .swirl-particle:nth-child(5) {
+            bottom: 10px;
+            left: 10px;
+            animation-delay: 0.8s;
+        }
+
+        .swirl-particle:nth-child(6) {
+            top: 10px;
+            left: 10px;
+            animation-delay: 1s;
+        }
+
+        @keyframes swirlRotate {
+            0% {
+                transform: rotate(0deg) translateX(20px) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: rotate(360deg) translateX(20px) rotate(-360deg);
+                opacity: 1;
+            }
+        }
+
+        .cursor-dot.hover {
+            transform: scale(2.5);
+            background: var(--primary-white);
+            box-shadow: 0 0 20px var(--primary-white);
+        }
+
+        .cursor-ring.hover {
+            transform: scale(1.8);
+            border-color: var(--primary-white);
+            opacity: 0.8;
+        }
+
+        .cursor-swirl.hover {
+            transform: scale(1.3);
+            opacity: 0.7;
+        }
+
+        .cursor-swirl.hover .swirl-particle {
+            animation-duration: 1s;
+        }
+
+        .cursor-dot.click {
+            transform: scale(0.3);
+            animation: cursorClick 0.3s ease;
+        }
+
+        .cursor-swirl.click {
+            animation: swirlExpand 0.3s ease;
+        }
+
+        @keyframes cursorClick {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.1); }
+            100% { transform: scale(0.3); }
+        }
+
+        @keyframes swirlExpand {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+            100% { transform: scale(1); }
+        }
+
+        /* Hide cursor on mobile */
+        @media (max-width: 768px) {
+            * {
+                cursor: auto;
+            }
+            .cursor-dot,
+            .cursor-ring,
+            .cursor-swirl {
+                display: none;
+            }
+        }
+
+        /* Theme Toggle Styles */
+        .theme-toggle {
+            border: none;
+            background: transparent;
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-red);
+            color: var(--primary-white);
+            transform: scale(1.1);
+        }
+
+        /* Dark Theme Specific Styles */
+        [data-theme="dark"] body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .navbar {
+            background: var(--bg-primary) !important;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="dark"] .navbar-nav .nav-link {
+            color: var(--text-primary) !important;
+        }
+
+        [data-theme="dark"] .page-header {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="dark"] .service-hero {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="dark"] .service-features {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="dark"] .cta-section {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="dark"] .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        [data-theme="dark"] .feature-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        [data-theme="dark"] .footer {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .section-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .section-subtitle {
+            color: var(--text-secondary);
+        }
+
+        /* Additional Text Color Fixes */
+        [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, 
+        [data-theme="dark"] h4, [data-theme="dark"] h5, [data-theme="dark"] h6 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] p {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .page-header h1 {
+            color: var(--primary-white);
+        }
+
+        [data-theme="dark"] .service-card h3 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .service-card p {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .feature-item h5 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .feature-item p {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .cta-section h2 {
+            color: var(--primary-white);
+        }
+
+        [data-theme="dark"] .cta-section p {
+            color: var(--primary-white);
+        }
+
+        [data-theme="dark"] .footer h5 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .footer p {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .footer a {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .footer a:hover {
+            color: var(--primary-red);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+        
+        .navbar {
+            background: var(--bg-primary) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-red) !important;
+        }
+        
+        .navbar-nav .nav-link {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+            margin: 0 10px;
+        }
+        
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--primary-red) !important;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+            color: var(--primary-white);
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            margin-bottom: 3rem;
+        }
+        
+        .service-hero {
+            padding: 80px 0;
+            background: var(--light-gray);
+        }
+        
+        .service-card {
+            background: var(--primary-white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            margin-bottom: 30px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(224, 0, 0, 0.2);
+        }
+        
+        .service-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--primary-white);
+            font-size: 2.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+        
+        .service-card h3 {
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .service-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .service-features {
+            background: var(--primary-white);
+            padding: 80px 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            background: var(--primary-red);
+            color: var(--primary-white);
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--primary-white);
+            font-size: 1.2rem;
+        }
+        
+        .feature-item:hover .feature-icon {
+            background: var(--primary-white);
+            color: var(--primary-red);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+            color: var(--primary-white);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .btn-white {
+            background: var(--primary-white);
+            color: var(--primary-red);
+            border: 2px solid var(--primary-white);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-white:hover {
+            background: transparent;
+            color: var(--primary-white);
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            background: var(--dark-gray);
+            color: var(--primary-white);
+            padding: 50px 0 20px;
+        }
+        
+        .footer h5 {
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+        
+        .footer a {
+            color: var(--primary-white);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: var(--primary-red);
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+    <body>
+        <!-- Swirl Cursor Effect -->
+        <div class="cursor-dot"></div>
+        <div class="cursor-ring"></div>
+        <div class="cursor-swirl">
+            <div class="swirl-particle"></div>
+            <div class="swirl-particle"></div>
+            <div class="swirl-particle"></div>
+            <div class="swirl-particle"></div>
+            <div class="swirl-particle"></div>
+            <div class="swirl-particle"></div>
+        </div>
+        
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Malik Brothers Logo" height="40">
+                Malik Brothers LPG
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#bulk">Bulk LPG Supply</a></li>
+                            <li><a class="dropdown-item" href="#restaurant">Restaurant Delivery</a></li>
+                            <li><a class="dropdown-item" href="#industrial">Industrial Supply</a></li>
+                            <li><a class="dropdown-item" href="#scheduled">Scheduled Refills</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="locations.html">Locations</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-danger theme-toggle" id="themeToggle">
+                            <i class="fas fa-sun" id="themeIcon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>Comprehensive LPG Solutions for Every Business Need</p>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="service-hero">
+        <div class="container">
+            <h2 class="section-title">Professional LPG Distribution</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card" id="bulk">
+                        <div class="service-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3>Bulk LPG Supply</h3>
+                        <p>Large-scale LPG cylinder supply for industrial clients with flexible delivery schedules and volume discounts.</p>
+                        <a href="#bulk-details" class="btn btn-outline-danger">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card" id="restaurant">
+                        <div class="service-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Restaurant & Commercial</h3>
+                        <p>Reliable LPG delivery for restaurants, hotels, and commercial kitchens with guaranteed service quality.</p>
+                        <a href="#restaurant-details" class="btn btn-outline-danger">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card" id="industrial">
+                        <div class="service-icon">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <h3>Industrial Supply</h3>
+                        <p>Comprehensive LPG solutions for manufacturing and industrial facilities with specialized equipment.</p>
+                        <a href="#industrial-details" class="btn btn-outline-danger">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card" id="scheduled">
+                        <div class="service-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>Scheduled Refills</h3>
+                        <p>Automated refill scheduling to ensure you never run out of LPG with our smart monitoring system.</p>
+                        <a href="#scheduled-details" class="btn btn-outline-danger">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Details -->
+    <section class="service-features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5">
+                    <div id="bulk-details">
+                        <h3 class="text-danger mb-4">Bulk LPG Supply</h3>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div>
+                                <h5>Large Volume Delivery</h5>
+                                <p>Bulk orders with specialized delivery vehicles and handling equipment</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div>
+                                <h5>Volume Discounts</h5>
+                                <p>Competitive pricing for large orders with flexible payment terms</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h5>Flexible Scheduling</h5>
+                                <p>Custom delivery schedules to minimize disruption to your operations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-5">
+                    <div id="restaurant-details">
+                        <h3 class="text-danger mb-4">Restaurant & Commercial Delivery</h3>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div>
+                                <h5>Kitchen-Ready Solutions</h5>
+                                <p>Specialized cylinders and equipment for commercial kitchens</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Safety Compliance</h5>
+                                <p>All cylinders meet safety standards with regular inspection and maintenance</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h5>24/7 Support</h5>
+                                <p>Emergency delivery service to keep your business running smoothly</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-5">
+                    <div id="industrial-details">
+                        <h3 class="text-danger mb-4">Industrial Supply</h3>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div>
+                                <h5>Industrial Equipment</h5>
+                                <p>Specialized LPG systems and equipment for manufacturing processes</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h5>Usage Monitoring</h5>
+                                <p>Advanced monitoring systems to track consumption and optimize usage</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div>
+                                <h5>Technical Support</h5>
+                                <p>Expert technical support for installation, maintenance, and troubleshooting</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-5">
+                    <div id="scheduled-details">
+                        <h3 class="text-danger mb-4">Scheduled Refills</h3>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Smart Scheduling</h5>
+                                <p>Automated refill scheduling based on your usage patterns</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div>
+                                <h5>Proactive Alerts</h5>
+                                <p>Notifications before you run low on LPG to prevent interruptions</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div>
+                                <h5>Free Delivery</h5>
+                                <p>No delivery charges for all scheduled refill orders</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p class="mb-4">Contact us today to discuss your LPG requirements and get a customized quote</p>
+            <a href="contact.html" class="btn-white">Request a Quote</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5>Malik Brothers LPG</h5>
+                    <p>Trusted PSO Distributor serving Karachi and Islamabad for over 23years with high-quality LPG solutions.</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-phone me-2"></i> Karachi: +92 333 3241472</p>
+                    <p><i class="fas fa-phone me-2"></i> Islamabad: 03039712506</p>
+                    <p><i class="fas fa-envelope me-2"></i> Karachi: malikoilgastraders@gmail.com</p>
+                    <p><i class="fas fa-envelope me-2"></i> Islamabad: faisal.ws@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Karachi & Islamabad</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Business Hours</h5>
+                    <p>Monday - Sunday</p>
+                    <p>8:00 AM - 8:00 PM</p>
+                    <p>24/7 Emergency Support</p>
+                </div>
+            </div>
+            <div class="text-center pt-3 border-top">
+                <p>&copy; 2025 Malik Brothers LPG. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Swirl Cursor Effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorRing = document.querySelector('.cursor-ring');
+            const cursorSwirl = document.querySelector('.cursor-swirl');
+            
+            if (!cursorDot || !cursorRing || !cursorSwirl) return;
+            
+            let mouseX = 0;
+            let mouseY = 0;
+            let dotX = 0;
+            let dotY = 0;
+            let ringX = 0;
+            let ringY = 0;
+            let swirlX = 0;
+            let swirlY = 0;
+            
+            // Update mouse position
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+            
+            // Smooth cursor animation
+            function animateCursor() {
+                // Dot cursor (fastest)
+                dotX += (mouseX - dotX) * 0.3;
+                dotY += (mouseY - dotY) * 0.3;
+                cursorDot.style.left = dotX + 'px';
+                cursorDot.style.top = dotY + 'px';
+                
+                // Ring cursor (medium)
+                ringX += (mouseX - ringX) * 0.15;
+                ringY += (mouseY - ringY) * 0.15;
+                cursorRing.style.left = ringX + 'px';
+                cursorRing.style.top = ringY + 'px';
+                
+                // Swirl cursor (slowest)
+                swirlX += (mouseX - swirlX) * 0.08;
+                swirlY += (mouseY - swirlY) * 0.08;
+                cursorSwirl.style.left = swirlX + 'px';
+                cursorSwirl.style.top = swirlY + 'px';
+                
+                requestAnimationFrame(animateCursor);
+            }
+            
+            // Click animation
+            document.addEventListener('click', () => {
+                cursorDot.classList.add('click');
+                cursorSwirl.classList.add('click');
+                setTimeout(() => {
+                    cursorDot.classList.remove('click');
+                    cursorSwirl.classList.remove('click');
+                }, 300);
+            });
+            
+            // Hover effects for interactive elements
+            const hoverElements = document.querySelectorAll('a, button, .btn, .nav-link, .service-card, .feature-item');
+            hoverElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    cursorDot.classList.add('hover');
+                    cursorRing.classList.add('hover');
+                    cursorSwirl.classList.add('hover');
+                });
+                
+                element.addEventListener('mouseleave', () => {
+                    cursorDot.classList.remove('hover');
+                    cursorRing.classList.remove('hover');
+                    cursorSwirl.classList.remove('hover');
+                });
+            });
+            
+            // Start animation
+            animateCursor();
+        });
+        
+        // Theme Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const html = document.documentElement;
+            
+            // Check for saved theme preference or default to light
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            html.setAttribute('data-theme', currentTheme);
+            updateThemeIcon(currentTheme);
+            
+            // Theme toggle click handler
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+            
+            function updateThemeIcon(theme) {
+                if (theme === 'dark') {
+                    themeIcon.className = 'fas fa-moon';
+                } else {
+                    themeIcon.className = 'fas fa-sun';
+                }
+            }
+        });
+    </script>
+</body>
+</html> 
