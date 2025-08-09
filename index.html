@@ -781,6 +781,38 @@
             text-align: center;
         }
         
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25D366;
+            color: #FFFFFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            color: #FFFFFF;
+            transform: scale(1.1);
+            text-decoration: none;
+        }
+        
+        .whatsapp-float i {
+            margin: 0;
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero-content h1 {
@@ -813,6 +845,14 @@
             
             .navbar-brand {
                 font-size: 1.2rem;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 25px;
             }
         }
     </style>
@@ -896,8 +936,6 @@
         <div class="hero-content">
             <h1>Malik Brothers — Trusted PSO Distributor for 23 Years</h1>
             <p class="subtitle">Serving Karachi & Islamabad</p>
-            <p class="subtitle">+92 3333241472</p>
-            
             <div class="hero-buttons">
                 <a href="shop.html" class="btn-primary-custom">Shop Now</a>
                 <a href="contact.html" class="btn-outline-custom">Request a Quote</a>
@@ -998,6 +1036,11 @@
             </div>
         </div>
     </section>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/923333241472" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <!-- Footer -->
     <footer class="footer">

@@ -412,7 +412,7 @@
             border-radius: 15px;
             margin-bottom: 25px;
             transition: transform 0.3s ease;
-            background: #f8f9fa;
+            background: #ffffff;
         }
         
         .product-card:hover .product-image {
@@ -620,6 +620,38 @@
             color: var(--primary-red);
         }
         
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25D366;
+            color: #FFFFFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            color: #FFFFFF;
+            transform: scale(1.1);
+            text-decoration: none;
+        }
+        
+        .whatsapp-float i {
+            margin: 0;
+        }
+        
         @media (max-width: 768px) {
             .page-header h1 {
                 font-size: 2.5rem;
@@ -631,6 +663,14 @@
             
             .product-image {
                 height: 250px;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 25px;
             }
         }
     </style>
@@ -838,15 +878,15 @@
                 <!-- 45.5kg Metal Cylinder -->
                 <div class="col-lg-4 col-md-6">
                     <div class="product-card">
-                        <img src="45.4kg.png" alt="45.4kg Metal LPG Cylinder" class="product-image">
+                        <img src="45.4kg.png" alt="45.5kg Metal LPG Cylinder" class="product-image">
                         <div class="product-badge">Commercial Grade</div>
-                        <h3 class="product-title">45.4kg Metal Cylinder</h3>
+                        <h3 class="product-title">45.5kg Metal Cylinder</h3>
                         <div class="product-price">Rs. 23,500</div>
                         
                         <div class="product-specs">
                             <div class="spec-item">
                                 <span class="spec-label">Capacity:</span>
-                                <span class="spec-value">45.4kg</span>
+                                <span class="spec-value">45.5kg</span>
                             </div>
                             <div class="spec-item">
                                 <span class="spec-label">Material:</span>
@@ -876,7 +916,7 @@
                             </ul>
                         </div>
                         
-                        <button class="btn-order" onclick="addToCart(3, '45.4kg Metal Cylinder', 45000)">Add to Cart</button>
+                        <button class="btn-order" onclick="addToCart(3, '45.5kg Metal Cylinder', 45000)">Add to Cart</button>
                         <button class="btn-details" onclick="showProductDetails(3)">View Details</button>
                     </div>
                 </div>
@@ -913,7 +953,7 @@
                     <div class="gallery-item">
                         <img src="45.4kg.png" alt="45.5kg Metal Cylinder">
                         <div class="gallery-caption">
-                            <h5>45.4kg Metal Cylinder</h5>
+                            <h5>45.5kg Metal Cylinder</h5>
                             <p>Commercial grade capacity</p>
                         </div>
                     </div>
@@ -996,13 +1036,18 @@
         </div>
     </section>
 
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/923333241472" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <h5>Malik Brothers LPG</h5>
-                    <p>Trusted PSO Distributor serving Karachi and Islamabad for over 23 years with high-quality LPG solutions.</p>
+                    <p>Trusted PSO Distributor serving Karachi and Islamabad for over 21 years with high-quality LPG solutions.</p>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h5>Quick Links</h5>
@@ -1029,7 +1074,7 @@
                 </div>
             </div>
             <div class="text-center pt-3 border-top">
-                <p>&copy; 2025 Malik Brothers LPG. All rights reserved.</p>
+                <p>&copy; 2024 Malik Brothers LPG. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1084,7 +1129,7 @@
                     }
                 },
                 3: {
-                    name: "45.4kg Metal Cylinder",
+                    name: "45.5kg Metal Cylinder",
                     description: "Heavy-duty commercial cylinder designed for restaurants, factories, and large-scale operations.",
                     specifications: {
                         "Capacity": "45.5kg",

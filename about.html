@@ -1109,6 +1109,38 @@
             color: var(--primary-red);
         }
         
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25D366;
+            color: #FFFFFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            color: #FFFFFF;
+            transform: scale(1.1);
+            text-decoration: none;
+        }
+        
+        .whatsapp-float i {
+            margin: 0;
+        }
+        
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -1158,6 +1190,14 @@
             .hero-stats {
                 flex-direction: column;
                 gap: 20px;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 25px;
             }
         }
     </style>
@@ -1342,8 +1382,8 @@
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-year">2020</div>
-                        <div class="timeline-title">Free Delivery</div>
-                        <p>Free deliveries and safe cylinders to the customers.</p>
+                        <div class="timeline-title">Digital Transformation</div>
+                        <p>Launched online ordering system and mobile app for customer convenience.</p>
                     </div>
                 </div>
                 
@@ -1415,7 +1455,7 @@
                             <p><i class="fas fa-map-marker-alt"></i> Clifton, Karachi, Pakistan</p>
                             <p><i class="fas fa-phone"></i> +92-3333241472</p>
                             <p><i class="fas fa-envelope"></i> malikoilgastraders@gmail.com</p>
-                            <p><i class="fas fa-clock"></i> Mon-Sun: 10:00 AM - 10:00 PM</p>
+                            <p><i class="fas fa-clock"></i> Mon-Sun: 8:00 AM - 8:00 PM</p>
                         </div>
                         <p>Our flagship branch serving the heart of Karachi with premium LPG solutions and exceptional customer service.</p>
                     </div>
@@ -1647,14 +1687,19 @@
                         <p>With over 23 years of experience in the LPG industry, Malik Safdar has been the driving force behind Malik Brothers' success. His vision, leadership, and commitment to excellence have made us one of the most trusted names in LPG distribution.</p>
                         
                         <div class="mt-3">
-                            <a href="https://www.linkedin.com/in/safdar-hussain-48b1522a3/" class="btn btn-outline-danger me-2"><i class="fab fa-linkedin"></i></a>
-                            <a href="malikoilgastraders@gmail.com" class="btn btn-outline-danger"><i class="fas fa-envelope"></i></a>
+                            <a href="#" class="btn btn-outline-danger me-2"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="btn btn-outline-danger"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/923333241472" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <!-- Footer -->
     <footer class="footer" style="background: var(--dark-gray); color: var(--primary-white); padding: 50px 0 20px;">
